@@ -15,6 +15,11 @@ class CreateContasTable extends Migration
     {
         Schema::create('contas', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->Integer('credito');
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

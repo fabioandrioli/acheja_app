@@ -15,6 +15,13 @@ class CreateImagensTable extends Migration
     {
         Schema::create('imagens', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('empresa_id')->unsigned();
+            $table->String('arquivo');
+            $table->String('descricao')->nullable();
+            $table->boolean('prioridade');
+            $table->foreign('empresa_id')
+            ->references('id')
+            ->on('empresa')->onDelete('cascade');
             $table->timestamps();
         });
     }

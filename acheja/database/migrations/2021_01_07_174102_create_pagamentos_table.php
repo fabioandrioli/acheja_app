@@ -15,6 +15,14 @@ class CreatePagamentosTable extends Migration
     {
         Schema::create('pagamentos', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->Integer('codigo');
+            $table->string('arquivo');
+            $table->string('situacao');
+            $table->double('valor');
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

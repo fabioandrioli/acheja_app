@@ -15,6 +15,16 @@ class CreateLinksTable extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('empresa_id')->unsigned();
+            $table->string('name');
+            $table->string('endereco');
+            $table->String('horario_atendimento')->nullable();
+            $table->string('situacao');
+
+
+            $table->foreign('empresa_id')
+                  ->references('id')
+                  ->on('empresas')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,6 +15,16 @@ class CreateTelefonesTable extends Migration
     {
         Schema::create('telefones', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('empresa_id')->unsigned();
+            $table->string('numero');
+            $table->boolean('whatsapp');
+            $table->String('observacao')->nullable();
+            $table->string('situacao');
+            $table->timestamps();
+
+            $table->foreign('empresa_id')
+                  ->references('id')
+                  ->on('empresa')->onDelete('cascade');
             $table->timestamps();
         });
     }

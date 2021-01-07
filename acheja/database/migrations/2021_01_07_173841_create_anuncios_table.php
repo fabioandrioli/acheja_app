@@ -15,6 +15,26 @@ class CreateAnunciosTable extends Migration
     {
         Schema::create('anuncios', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('empresa_id')->unsigned()->nullable();
+            $table->string('name');
+            $table->string('imagem');
+            $table->integer('quantidade_clique')->default(0);
+            $table->integer('quantidade_visualizacao')->default(0);
+            $table->string('descricao')->nullable();
+            $table->string('link')->nullable();
+            $table->date('data_inicio');
+            $table->date('data_fim');
+            $table->string('situacao');
+
+
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')->onDelete('cascade');
+
+                  $table->foreign('empresa_id')
+                  ->references('id')
+                  ->on('empresas');
             $table->timestamps();
         });
     }
