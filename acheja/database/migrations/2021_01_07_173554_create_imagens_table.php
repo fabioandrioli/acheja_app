@@ -21,7 +21,7 @@ class CreateImagensTable extends Migration
             $table->boolean('prioridade');
             $table->foreign('empresa_id')
             ->references('id')
-            ->on('empresa')->onDelete('cascade');
+            ->on('empresas')->onDelete('cascade');
             $table->timestamps();
         });
     }

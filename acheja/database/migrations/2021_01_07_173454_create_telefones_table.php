@@ -20,11 +20,10 @@ class CreateTelefonesTable extends Migration
             $table->boolean('whatsapp');
             $table->String('observacao')->nullable();
             $table->string('situacao');
-            $table->timestamps();
 
             $table->foreign('empresa_id')
                   ->references('id')
-                  ->on('empresa')->onDelete('cascade');
+                  ->on('empresas')->onDelete('cascade');
             $table->timestamps();
         });
     }

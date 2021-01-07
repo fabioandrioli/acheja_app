@@ -18,9 +18,9 @@ class CreateEmpresaCategoriaTable extends Migration
             $table->bigInteger('categoria_id')->unsigned();
             $table->bigInteger('empresa_id')->unsigned();
 
-            $table->foreign('categoia_id')
+            $table->foreign('categoria_id')
             ->references('id')
-            ->on('categoias')->onDelete('cascade');
+            ->on('categorias')->onDelete('cascade');
 
             $table->foreign('empresa_id')
             ->references('id')
