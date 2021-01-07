@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'endereco',
+        'empresa_id',
+    ];
 }

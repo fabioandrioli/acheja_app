@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Empresa extends Model
 {
+    protected $fillable = [
+        'name',
+        'cnpj',
+        'horario_atendimento',
+        'situacao',
+        'user_id',
+    ];
     use HasFactory;
 }

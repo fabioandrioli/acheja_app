@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Conta extends Model
 {
+    protected $fillable = [
+        'credito',
+        'user_id',
+    ];
+
     use HasFactory;
 }
