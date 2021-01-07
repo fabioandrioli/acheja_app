@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateEmpresaCategoriaTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('empresa_categoria', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('categoria_id')->unsigned();
+            $table->bigInteger('empresa_id')->unsigned();
+
+            $table->foreign('categoia_id')
+            ->references('id')
+            ->on('categoias')->onDelete('cascade');
+
+            $table->foreign('empresa_id')
+            ->references('id')
+            ->on('empresas')->onDelete('cascade');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('empresa_categoria');
+    }
+}
